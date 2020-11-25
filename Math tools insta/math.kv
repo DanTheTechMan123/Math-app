@@ -1,0 +1,429 @@
+WM:
+    Default:
+    Quadratic:
+    LawOfSINCOS:
+    MatrixMult:
+    Standard:
+    Slope:
+    RADEG:
+    LOS:
+    LOC:
+    TWO:
+    THREE:
+<Default>:
+    name: "main"
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Math Tools!"
+            font_size: 50
+            background_color: 88/255.0, 24/255.0, 69/255.0, 1
+        GridLayout:
+            cols: 2
+            Button:
+                text: "Quadratic formula"
+                on_release:
+                    app.root.current = "quad"
+                    root.manager.transition.direction = "left"
+            Button:
+                text: "Law of Sine and law of Cosine calculator"
+                on_release:
+                    app.root.current = "lsc"
+                    root.manager.transition.direction = "left"
+            Button:
+                text: "Matrix Determinant"
+                on_release:
+                    app.root.current = "matrix"
+                    root.manager.transition.direction = "left"
+            Button:
+                text: "Standard Deviation"
+                on_release:
+                    app.root.current = "SD"
+                    root.manager.transition.direction = "left"
+            Button:
+                text: "Slope Formula"
+                on_release:
+                    app.root.current = "SL"
+                    root.manager.transition.direction = "left"
+            Button:
+                text: "Degrees and Radian Conversions"
+                on_release:
+                    app.root.current = "DR"
+                    root.manager.transition.direction = "left"
+<Quadratic>:
+    name: "quad"
+    GridLayout:
+        cols: 1
+        Label:
+            text: "a"
+        TextInput:
+            input_filter: 'float'
+            id: a
+        Label:
+            text: "b"
+        TextInput:
+            input_filter: 'float'
+            id: b
+        Label:
+            text: "c"
+        TextInput:
+            input_filter: 'float'
+            id: c
+        Label:
+            id: x1
+            text: "x1="
+        Label:
+            id: x2
+            text: "x2="
+        GridLayout:
+            cols: 3
+            Button:
+                text: "Submit"
+                on_release: root.btn()
+            Button:
+                text: "Clear"
+                on_release: root.clear()
+            Button:
+                text: "Back to menu"
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = "right"
+<LawOfSINCOS>:
+    name: "lsc"
+    GridLayout:
+        cols: 1
+        Button:
+            text: "Law of sines"
+            on_release:
+                app.root.current = "sin"
+                root.manager.transition.direction = "left"
+        Button:
+            text: "Law of cosines"
+            on_release:
+                app.root.current = "cos"
+                root.manager.transition.direction = "left"
+        Button:
+            text: "Back to menu"
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+        
+<LOC>:
+    name: "cos"
+    GridLayout:
+        cols: 1
+        Label:
+            text: "a"
+        TextInput:
+            input_filter: 'float'
+            id: a
+        Label:
+            text: "b"
+        TextInput:
+            input_filter: 'float'
+            id: b
+        Label:
+            text: "C (angle)"
+        TextInput:
+            input_filter: 'float'
+            id: c
+        Label:
+            id: ans
+            text: "c ="
+        GridLayout:
+            cols: 3
+            Button:
+                text: "Submit"
+                on_release: root.btn()
+            Button:
+                text: "Clear"
+                on_release: root.clear()
+            Button:
+                text: "Back"
+                on_release:
+                    app.root.current = "lsc"
+                    root.manager.transition.direction = "right"
+
+<LOS>:
+    name: "sin"
+    GridLayout:
+        cols: 1
+        GridLayout:
+            cols: 2
+            Label:
+                text: "Known side measure(a)"
+            Label:
+                text: "Known angle measure(A)"
+            TextInput:
+                input_filter: 'float'
+                id: a
+            TextInput:
+                input_filter: 'float'
+                id: A
+        GridLayout:
+            cols: 2
+            Label:
+                text: "Solve for an angle"
+            Label:
+                text: "Solve for a side"
+            Label:
+                text: "Other known side measure(b)"
+            Label:
+                text: "Other known angle measure(B)"
+            TextInput:
+                input_filter: 'float'
+                id: b
+            TextInput:
+                input_filter: 'float'
+                id: B
+            Label:
+                text: "Final angle = "
+                id: angle
+            Label:
+                text: "Final side = "
+                id: side
+            Button:
+                text: "Submit" 
+                on_release: root.sub1()
+            Button:
+                text: "Submit" 
+                on_release: root.sub2()
+        GridLayout:
+            cols: 2
+            Button:
+                text: "Clear"
+                on_release: root.clear() 
+            Button:
+                text: "Back"
+                on_release:
+                    app.root.current = "lsc"
+                    root.manager.transition.direction = "right"
+
+    
+<MatrixMult>:
+    name: "matrix"
+    GridLayout:
+        cols: 1
+        Button:
+            text: "2x2 matrix"
+            on_release:
+                app.root.current = "two"
+                root.manager.transition.direction = "left"
+        Button:
+            text: "3x3 matrix"
+            on_release:
+                app.root.current = "three"
+                root.manager.transition.direction = "left"
+        Button:
+            text: "Back to menu"
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+<TWO>:
+    name: "two"
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Fill out matrix below"
+        GridLayout:
+            cols: 2
+            TextInput:
+                input_filter: 'float'
+                id: a
+            TextInput:
+                input_filter: 'float'
+                id: b
+            TextInput:
+                input_filter: 'float'
+                id: c
+            TextInput:
+                input_filter: 'float'
+                id: d
+        Label:
+            id: ans
+            text: "Determinant: "
+        GridLayout:
+            cols: 3
+            Button:
+                text: "Submit"
+                on_release: root.btn()
+            Button:
+                text: "Clear"
+                on_release: root.clear()    
+            Button:
+                text: "Back"
+                on_release:
+                    app.root.current = "matrix"
+                    root.manager.transition.direction = "right"
+<THREE>:
+    name: "three"
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Fill out matrix below"
+        GridLayout:
+            cols: 3
+            TextInput:
+                input_filter: 'float'
+                id: a
+            TextInput:
+                input_filter: 'float'
+                id: b
+            TextInput:
+                input_filter: 'float'
+                id: c
+            TextInput:
+                input_filter: 'float'
+                id: d
+            TextInput:
+                input_filter: 'float'
+                id: e
+            TextInput:
+                input_filter: 'float'
+                id: f
+            TextInput:
+                input_filter: 'float'
+                id: g
+            TextInput:
+                input_filter: 'float'
+                id: h
+            TextInput:
+                input_filter: 'float'
+                id: i
+        Label:
+            id: ans
+            text: "Determinant: "
+        GridLayout:
+            cols: 3
+            Button:
+                text: "Submit"
+                on_release: root.btn()
+            Button:
+                text: "Clear"
+                on_release: root.clear()    
+            Button:
+                text: "Back"
+                on_release:
+                    app.root.current = "matrix"
+                    root.manager.transition.direction = "right"
+<Standard>:
+    name: "SD"
+    GridLayout:
+        cols: 1
+        Label:
+            text: "# of items in data"
+        TextInput:
+            input_filter: 'float'
+            id: n
+        Button:
+            text: "Set"
+            on_release: root.set()
+        Label:
+            id: num
+            text: "# of entries left"
+        Label:
+            text: "Enter the current data"
+        TextInput:
+            input_filter: 'float'
+            id: d
+        Label:
+            id: std
+            text: "Standard Deviation: "
+        GridLayout:
+            cols: 3
+            Button:
+                text: "Submit"
+                on_release: root.std()
+            Button:
+                text: "Clear"
+                on_release: root.clear()
+            Button:
+                text: "Back to menu"
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = "right"
+<Slope>:
+    name: "SL"
+    GridLayout:
+        cols: 1
+        GridLayout:
+            cols: 2
+            Label:
+                text: "x1"
+            Label:
+                text: "x2"
+            TextInput:
+                input_filter: 'float'
+                id: x1
+            TextInput:
+                input_filter: 'float'
+                id: x2
+            Label:
+                text: "y1"
+            Label:
+                text: "y2"
+            TextInput:
+                input_filter: 'float'
+                id: y1
+            TextInput:
+                input_filter: 'float'
+                id: y2
+        Label:
+            id: m
+            text: "Slope = "
+        GridLayout:
+            cols: 3
+            Button:
+                text: "Submit"
+                on_release: root.btn()
+            Button:
+                text: "Clear"
+                on_release: root.clear()
+            Button:
+                text: "Back to menu"
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = "right"
+<RADEG>:
+    name: "DR"
+    GridLayout:
+        cols: 2
+        Label:
+            text: "Degrees to radians"
+        Label:
+            text: "Radians to Degrees"
+        Label:  
+            text: "Enter degrees here: "
+        Label:
+            text: "Enter radians here(not including pi): "
+        TextInput:
+            input_filter: 'float'
+            id: d1
+        TextInput:
+            input_filter: 'float'
+            id: r2
+        Label:
+            id: r1
+            text: "Radians: "
+        Label:
+            id: d2
+            text: "Degrees: "
+        Button:
+            text: "Submit"
+            on_release: root.dr()
+        Button:
+            text: "Submit"
+            on_release: root.rd()
+        Button:
+            text: "Clear"
+            on_release: root.clear()
+        Button:
+            text: "Back to menu"
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+
+ 
+    
+    
